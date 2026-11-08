@@ -1,0 +1,1 @@
+import{S as e,V as t,f as n,h as r}from"./runtime-core.esm-bundler-B8bAGhjJ.js";var i={class:`h-full`},a=[`src`],o=e({name:`iframe-page`,__name:`[url]`,props:{url:{}},setup(e){return(o,s)=>(t(),r(`div`,i,[n(`iframe`,{id:`iframePage`,class:`size-full`,src:e.url},null,8,a)]))}});export{o as default};

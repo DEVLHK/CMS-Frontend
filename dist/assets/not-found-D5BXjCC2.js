@@ -1,0 +1,1 @@
+var e=`/assets/not-found-razSGmuo.svg`;export{e as default};

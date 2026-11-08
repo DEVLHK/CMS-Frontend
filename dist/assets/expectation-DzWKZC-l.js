@@ -1,0 +1,1 @@
+var e=`/assets/expectation-DgX_FVWL.svg`;export{e as default};

@@ -1,0 +1,1 @@
+import{Gt as e,S as t,V as n,f as r,h as i}from"./runtime-core.esm-bundler-B8bAGhjJ.js";var a=[`href`],o=t({name:`WebSiteLink`,__name:`web-site-link`,props:{label:{},link:{}},setup(t){return(o,s)=>(n(),i(`p`,null,[r(`span`,null,e(t.label),1),r(`a`,{class:`text-blue-500`,href:t.link,target:`#`},e(t.link),9,a)]))}});export{o as t};

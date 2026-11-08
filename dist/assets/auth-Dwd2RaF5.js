@@ -1,0 +1,1 @@
+import{n as e}from"./router-gAJriO_J.js";function t(){let t=e();function n(e){return t.isLogin?typeof e==`string`?t.userInfo.buttons.includes(e):e.some(e=>t.userInfo.buttons.includes(e)):!1}return{hasAuth:n}}export{t};

@@ -1,0 +1,1 @@
+import{y as e}from"./runtime-core.esm-bundler-B8bAGhjJ.js";function t(t,...n){return typeof t==`function`?t(...n):typeof t==`string`?e(t):typeof t==`number`?e(String(t)):null}function n(e,t=[],n){let r={};return Object.getOwnPropertyNames(e).forEach(n=>{t.includes(n)||(r[n]=e[n])}),Object.assign(r,n)}export{t as n,n as t};

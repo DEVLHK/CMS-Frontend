@@ -1,0 +1,1 @@
+var e=`/assets/empty-data-CXPJUTZG.svg`;export{e as default};

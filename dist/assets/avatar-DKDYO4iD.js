@@ -1,0 +1,1 @@
+var e=`/assets/avatar-C3nF7gXh.svg`;export{e as default};

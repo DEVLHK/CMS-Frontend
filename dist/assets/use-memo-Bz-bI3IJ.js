@@ -1,0 +1,1 @@
+import{d as e,gt as t,tt as n}from"./runtime-core.esm-bundler-B8bAGhjJ.js";function r(r){let i=e(r),a=t(i.value);return n(i,e=>{a.value=e}),typeof r==`function`?a:{__v_isRef:!0,get value(){return a.value},set value(e){r.set(e)}}}export{r as t};

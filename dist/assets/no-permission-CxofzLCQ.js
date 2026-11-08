@@ -1,0 +1,1 @@
+var e=`/assets/no-permission-XSFYa1nS.svg`;export{e as default};

@@ -1,0 +1,1 @@
+var e=`/assets/service-error-ByZIPmgv.svg`;export{e as default};

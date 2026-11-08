@@ -1,0 +1,1 @@
+var e=`/assets/alova-F2DECSKI.svg`;export{e as default};

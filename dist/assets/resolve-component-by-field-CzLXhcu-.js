@@ -1,0 +1,1 @@
+import{E as e,K as t}from"./runtime-core.esm-bundler-B8bAGhjJ.js";import{x as n}from"./use-locale-BycrqHrL.js";function r(e,t=[],n){let r={};return t.forEach(t=>{t in e&&(r[t]=e[t])}),Object.assign(r,n)}function i(r,i={}){let{fieldSlots:a,fieldProps:o,proFieldProps:s,prefix:c=`pro`}=i,l=t(`${c}-${r}`);return n(l)?null:e(l,{...s,fieldProps:o},a)}export{r as n,i as t};

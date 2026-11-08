@@ -1,0 +1,1 @@
+import{S as e,V as t,p as n}from"./runtime-core.esm-bundler-B8bAGhjJ.js";import{t as r}from"./web-site-link-BeNcCDY_.js";var i=e({name:`GithubLink`,__name:`github-link`,props:{link:{}},setup(e){return(i,a)=>(t(),n(r,{label:`github地址：`,link:e.link},null,8,[`link`]))}});export{i as t};
