@@ -49,7 +49,7 @@ export default defineConfig(configEnv => {
     },
     preview: {
       host: '0.0.0.0',
-      port: 4000
+      port: 5000
     },
     build: {
       reportCompressedSize: false,

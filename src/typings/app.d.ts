@@ -541,32 +541,20 @@ declare namespace App {
           devDep: string;
         };
         home: {
-          branchDesc: string;
-          greeting: string;
+          greetingMorning: string;
+          greetingEvening: string;
           weatherDesc: string;
-          projectCount: string;
-          todo: string;
-          message: string;
-          downloadCount: string;
-          registerCount: string;
-          schedule: string;
-          study: string;
-          work: string;
-          rest: string;
-          entertainment: string;
-          visitCount: string;
-          turnover: string;
-          dealCount: string;
-          projectNews: {
+          contractCount: string;
+          contractAmount: string;
+          receiptAmount: string;
+          grossProfit: string;
+          expiringCount: string;
+          expiringNews: {
             title: string;
-            moreNews: string;
-            desc1: string;
-            desc2: string;
-            desc3: string;
-            desc4: string;
-            desc5: string;
+            expireDate: string;
+            empty: string;
+            noMore: string;
           };
-          creativity: string;
         };
         function: {
           tab: {

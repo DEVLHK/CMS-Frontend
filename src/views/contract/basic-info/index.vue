@@ -1,6 +1,7 @@
 <script setup lang="tsx">
-import { computed, h, ref, toRaw } from 'vue';
+import { computed, h, ref, toRaw, watch } from 'vue';
 import type { Component } from 'vue';
+import { useRoute } from 'vue-router';
 import { NButton, NTag, NTooltip } from 'naive-ui';
 import dayjs from 'dayjs';
 import { useNDataTable } from 'pro-naive-ui';
@@ -72,8 +73,31 @@ function createDefaultSearchValues(): ContractSearchValues {
 
 const searchValues = ref<ContractSearchValues>(createDefaultSearchValues());
 
-async function fetchList(params: any, values: ContractSearchValues | Record<string, any>) {
-  const { monthRange, ...rest } = values as ContractSearchValues;
+// support opening from the home expiring list: /contract/basic-info?contractNo=xxx queries directly.
+// set during setup so the auto query on mount already carries the value
+const route = useRoute();
+const routeContractNo = route.query.contractNo;
+if (typeof routeContractNo === 'string' && routeContractNo) {
+  searchValues.value.contractNo = routeContractNo;
+}
+
+// when the tab is reused (navigating with a different contractNo while the page is already open),
+// the setup read above won't re-run, so watch the query and re-query on change
+watch(
+  () => route.query.contractNo,
+  no => {
+    if (typeof no === 'string' && no && no !== searchValues.value.contractNo) {
+      searchValues.value.contractNo = no;
+      handleSearch();
+    }
+  }
+);
+
+async function fetchList(params: any, values?: ContractSearchValues | Record<string, any>) {
+  // the auto query on page mount runs without form values; fall back to the current search form state
+  // (so the default status="active" filter is applied on the initial load)
+  const merged = { ...toRaw(searchValues.value), ...(values ?? {}) } as ContractSearchValues;
+  const { monthRange, ...rest } = merged;
   const sorter = (params.sorter ?? null) as { columnKey?: string; order?: string } | null;
   const { data, error } = await fetchGetContractList({
     current: params.current,

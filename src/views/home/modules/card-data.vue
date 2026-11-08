@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { createReusableTemplate } from '@vueuse/core';
+import { fetchGetHomeStats } from '@/service/api';
 import { $t } from '@/locales';
 import { useThemeStore } from '@/store/modules/theme';
 
@@ -12,7 +13,8 @@ interface CardData {
   key: string;
   title: string;
   value: number;
-  unit: string;
+  prefix: string;
+  decimals: number;
   color: {
     start: string;
     end: string;
@@ -20,12 +22,22 @@ interface CardData {
   icon: string;
 }
 
+const stats = ref<Api.HomeManage.HomeStats | null>(null);
+
+onMounted(async () => {
+  const { data, error } = await fetchGetHomeStats();
+  if (!error && data) {
+    stats.value = data;
+  }
+});
+
 const cardData = computed<CardData[]>(() => [
   {
-    key: 'visitCount',
-    title: $t('page.home.visitCount'),
-    value: 9725,
-    unit: '',
+    key: 'contractCount',
+    title: $t('page.home.contractCount'),
+    value: stats.value?.contractCount ?? 0,
+    prefix: '',
+    decimals: 0,
     color: {
       start: '#ec4786',
       end: '#b955a4'
@@ -33,10 +45,11 @@ const cardData = computed<CardData[]>(() => [
     icon: 'ant-design:bar-chart-outlined'
   },
   {
-    key: 'turnover',
-    title: $t('page.home.turnover'),
-    value: 1026,
-    unit: '$',
+    key: 'contractAmount',
+    title: $t('page.home.contractAmount'),
+    value: stats.value?.totalContractAmount ?? 0,
+    prefix: '¥',
+    decimals: 2,
     color: {
       start: '#865ec0',
       end: '#5144b4'
@@ -44,21 +57,23 @@ const cardData = computed<CardData[]>(() => [
     icon: 'ant-design:money-collect-outlined'
   },
   {
-    key: 'downloadCount',
-    title: $t('page.home.downloadCount'),
-    value: 970925,
-    unit: '',
+    key: 'receiptAmount',
+    title: $t('page.home.receiptAmount'),
+    value: stats.value?.totalReceiptAmount ?? 0,
+    prefix: '¥',
+    decimals: 2,
     color: {
       start: '#56cdf3',
       end: '#719de3'
     },
-    icon: 'carbon:document-download'
+    icon: 'ant-design:pay-circle-outlined'
   },
   {
-    key: 'dealCount',
-    title: $t('page.home.dealCount'),
-    value: 9527,
-    unit: '',
+    key: 'grossProfit',
+    title: $t('page.home.grossProfit'),
+    value: stats.value?.totalGrossProfit ?? 0,
+    prefix: '¥',
+    decimals: 2,
     color: {
       start: '#fcbc25',
       end: '#f68057'
@@ -100,7 +115,8 @@ function getGradientColor(color: CardData['color']) {
           <div class="flex justify-between pt-12px">
             <SvgIcon :icon="item.icon" class="text-32px" />
             <CountTo
-              :prefix="item.unit"
+              :prefix="item.prefix"
+              :decimals="item.decimals"
               :start-value="1"
               :end-value="item.value"
               class="text-30px text-white dark:text-dark"

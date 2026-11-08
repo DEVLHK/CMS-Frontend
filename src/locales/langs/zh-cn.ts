@@ -367,33 +367,20 @@ const local: App.I18n.Schema = {
       devDep: '开发依赖'
     },
     home: {
-      branchDesc:
-        '为了方便大家开发和更新合并，我们对main分支的代码进行了精简，只保留了首页菜单，其余内容已移至example分支进行维护。预览地址显示的内容即为example分支的内容。',
-      greeting: '早安，{userName}, 今天又是充满活力的一天!',
+      greetingMorning: '早上好，{userName}，今天又是充满活力的一天!',
+      greetingEvening: '晚上好，{userName}，早点休息!',
       weatherDesc: '今日多云转晴，20℃ - 25℃!',
-      projectCount: '项目数',
-      todo: '待办',
-      message: '消息',
-      downloadCount: '下载量',
-      registerCount: '注册量',
-      schedule: '作息安排',
-      study: '学习',
-      work: '工作',
-      rest: '休息',
-      entertainment: '娱乐',
-      visitCount: '访问量',
-      turnover: '成交额',
-      dealCount: '成交量',
-      projectNews: {
-        title: '项目动态',
-        moreNews: '更多动态',
-        desc1: 'Soybean 在2021年5月28日创建了开源项目 soybean-admin!',
-        desc2: 'Yanbowe 向 soybean-admin 提交了一个bug，多标签栏不会自适应。',
-        desc3: 'Soybean 准备为 soybean-admin 的发布做充分的准备工作!',
-        desc4: 'Soybean 正在忙于为soybean-admin写项目说明文档！',
-        desc5: 'Soybean 刚才把工作台页面随便写了一些，凑合能看了！'
-      },
-      creativity: '创意'
+      contractCount: '合同数',
+      contractAmount: '合同额',
+      receiptAmount: '收款额',
+      grossProfit: '毛利润',
+      expiringCount: '即将到期',
+      expiringNews: {
+        title: '即将到期合同动态',
+        expireDate: '到期日期',
+        empty: '暂无即将到期的合同',
+        noMore: '没有更多了'
+      }
     },
     function: {
       tab: {
@@ -502,8 +489,8 @@ const local: App.I18n.Schema = {
         currentFile: '当前文件：',
         download: '下载',
         uploadTip: '必须同时上传两份不同格式的合同：Word 版（.doc，用于解析预填）与 PDF 版',
-        reuploadWord: '重新上传 Word 合同（选填，保存后覆盖原文件）',
-        reuploadPdf: '重新上传 PDF 合同（选填，保存后覆盖原文件）',
+        reuploadWord: '重传 Word 合同',
+        reuploadPdf: '重传 PDF 合同',
         missingFields: '以下字段未从合同中解析到，请手动填写：',
         replaceTip: '已选择新合同文件，保存后将覆盖原文件',
         uploadFailed: '合同上传失败，请重试'

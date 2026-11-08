@@ -385,70 +385,66 @@ async function handleSubmit() {
       {{ $t('page.contractManage.operate.replaceTip') }}
     </NAlert>
 
-    <NGrid cols="1 m:2" :x-gap="12" responsive="screen" item-responsive>
-      <NGi span="1 m:1">
-        <div class="mb-6px text-13px font-500">
-          {{ isEdit ? $t('page.contractManage.operate.reuploadWord') : $t('page.contractManage.operate.uploadContractWord') }}
-        </div>
-        <div
-          v-if="isEdit && currentWordFileName"
-          class="mb-6px flex-y-center gap-4px text-12px text-gray-500"
-        >
-          <span>{{ $t('page.contractManage.operate.currentFile') }}{{ currentWordFileName }}</span>
-          <NButton text type="primary" size="tiny" @click="downloadCurrentWord">
-            {{ $t('page.contractManage.operate.download') }}
-          </NButton>
-        </div>
-        <NUpload
-          v-model:file-list="uploadFileList"
-          accept=".doc"
-          :max="1"
-          :default-upload="false"
-          @change="handleContractFileChange"
-        >
-          <NButton type="primary" ghost size="small" :loading="uploadLoading">
-            <template #icon>
-              <icon-ic-round-upload class="text-icon" />
-            </template>
-            {{ $t('page.contractManage.operate.selectFile') }}
-          </NButton>
-        </NUpload>
-      </NGi>
-      <NGi span="1 m:1">
-        <div class="mb-6px text-13px font-500">
-          {{ isEdit ? $t('page.contractManage.operate.reuploadPdf') : $t('page.contractManage.operate.uploadContractPdf') }}
-        </div>
-        <div
-          v-if="isEdit && currentPdfFileName"
-          class="mb-6px flex-y-center gap-4px text-12px text-gray-500"
-        >
-          <span>{{ $t('page.contractManage.operate.currentFile') }}{{ currentPdfFileName }}</span>
-          <NButton text type="primary" size="tiny" @click="downloadCurrentPdf">
-            {{ $t('page.contractManage.operate.download') }}
-          </NButton>
-        </div>
-        <NUpload
-          v-model:file-list="pdfFileList"
-          accept=".pdf"
-          :max="1"
-          :default-upload="false"
-          @change="handlePdfFileChange"
-        >
-          <NButton type="primary" ghost size="small">
-            <template #icon>
-              <icon-ic-round-upload class="text-icon" />
-            </template>
-            {{ $t('page.contractManage.operate.selectFile') }}
-          </NButton>
-        </NUpload>
-      </NGi>
-    </NGrid>
-    <div v-if="!isEdit" class="mt-8px mb-12px text-12px text-gray-400">
+    <div v-if="!isEdit" class="mb-12px text-12px text-gray-400">
       {{ $t('page.contractManage.operate.uploadTip') }}
     </div>
 
     <NForm ref="formRef" :model="formModel" :rules="rules" label-placement="left" :label-width="110">
       <NGrid :cols="2" :x-gap="12" responsive="screen" item-responsive>
+        <NFormItemGi span="2" :label="isEdit ? $t('page.contractManage.operate.reuploadWord') : $t('page.contractManage.operate.uploadContractWord')">
+          <div class="flex-y-center gap-4px">
+            <NUpload
+              v-model:file-list="uploadFileList"
+              accept=".doc"
+              :max="1"
+              :default-upload="false"
+              @change="handleContractFileChange"
+            >
+              <NButton type="primary" ghost size="small" :loading="uploadLoading">
+                <template #icon>
+                  <icon-ic-round-upload class="text-icon" />
+                </template>
+                {{ $t('page.contractManage.operate.selectFile') }}
+              </NButton>
+            </NUpload>
+            <div
+              v-if="isEdit && currentWordFileName"
+              class="flex-y-center gap-4px whitespace-nowrap text-12px text-gray-500"
+            >
+              <span class="whitespace-nowrap">{{ $t('page.contractManage.operate.currentFile') }}{{ currentWordFileName }}</span>
+              <NButton text type="primary" size="tiny" @click="downloadCurrentWord">
+                {{ $t('page.contractManage.operate.download') }}
+              </NButton>
+            </div>
+          </div>
+        </NFormItemGi>
+        <NFormItemGi span="2" :label="isEdit ? $t('page.contractManage.operate.reuploadPdf') : $t('page.contractManage.operate.uploadContractPdf')">
+          <div class="flex-y-center gap-4px">
+            <NUpload
+              v-model:file-list="pdfFileList"
+              accept=".pdf"
+              :max="1"
+              :default-upload="false"
+              @change="handlePdfFileChange"
+            >
+              <NButton type="primary" ghost size="small">
+                <template #icon>
+                  <icon-ic-round-upload class="text-icon" />
+                </template>
+                {{ $t('page.contractManage.operate.selectFile') }}
+              </NButton>
+            </NUpload>
+            <div
+              v-if="isEdit && currentPdfFileName"
+              class="flex-y-center gap-4px whitespace-nowrap text-12px text-gray-500"
+            >
+              <span class="whitespace-nowrap">{{ $t('page.contractManage.operate.currentFile') }}{{ currentPdfFileName }}</span>
+              <NButton text type="primary" size="tiny" @click="downloadCurrentPdf">
+                {{ $t('page.contractManage.operate.download') }}
+              </NButton>
+            </div>
+          </div>
+        </NFormItemGi>
         <NFormItemGi span="2" :label="$t('page.contractManage.basicInfo.contractNo')" path="contractNo">
           <NInput
             v-model:value="formModel.contractNo"
