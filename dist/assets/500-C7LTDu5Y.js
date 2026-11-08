@@ -1,0 +1,1 @@
+import{S as e,V as t,p as n}from"./runtime-core.esm-bundler-B8bAGhjJ.js";import{t as r}from"./exception-base-DlCtV3go.js";var i=e({name:`500`,__name:`index`,setup(e){return(e,i)=>{let a=r;return t(),n(a,{type:`500`})}}});export{i as default};

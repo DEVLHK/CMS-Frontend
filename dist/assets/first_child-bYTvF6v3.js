@@ -1,1 +1,0 @@
-import{S as e,V as t,p as n}from"./runtime-core.esm-bundler-B8bAGhjJ.js";import{t as r}from"./look-forward-CwpRx5aY.js";var i=e({name:`multi-menu_first_child`,__name:`index`,setup(e){return(e,i)=>{let a=r;return t(),n(a)}}});export{i as default};
